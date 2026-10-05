@@ -1,12 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
 
+/// Claire Battelle
+/// October 5, 2026
+/// Creates the GUI for the Tic Tac Toe game
 public class TicTacToeFrame extends JFrame {
     private final int ROW = 3, COL = 3;
     private TicTacToeTile[][] boardButtons = new TicTacToeTile[ROW][COL];
     private String player = "X";
     private int moveCnt = 0;
 
+    /// sets the title
+    /// creates the 9 tiles that make up the board
+    /// adds a quit button
+    /// sets the size of the board
+    /// makes sure board is clear when game starts
     public TicTacToeFrame(){
         setTitle("Tic Tac Toe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,6 +46,8 @@ public class TicTacToeFrame extends JFrame {
         clearBoard();
     }
 
+    /// tells what happens when a player makes a move ie invalid move, good move etc
+    /// tells when player wins
     private void handleMove(TicTacToeTile tile) {
         int r = tile.getRow(), c = tile.getCol();
 
@@ -59,6 +69,7 @@ public class TicTacToeFrame extends JFrame {
         }
     }
 
+    /// When game is over, prompts user to play another game or quit
     private void endGame(String msg){
         int choice = JOptionPane.showConfirmDialog(this, msg + "\nPlay again?", "Game over", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
@@ -68,6 +79,8 @@ public class TicTacToeFrame extends JFrame {
         }
     }
 
+    /// it says what a clear board is aka it has no moves on the tiles
+    /// this is used for when the game starts
     private void clearBoard(){
         moveCnt = 0;
         player = "X";
